@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>Hello world</h1>
+    <p>Putting things I build here</p>
+
+    <h2>Trends</h2>
+    <button onclick="saveTrends()">Save trends</button>
+    <p id="write-trends-result"></p>
+
+</body>
+
+<script>
+    function saveTrends() {
+        var msg = 'Working...';
+        document.getElementById("write-trends-result").innerHTML = msg;
+        const writeTrendUrl = 'https://ajqc8nxe7e.execute-api.us-west-2.amazonaws.com/dev';
+        const requestOptions = {
+            method: 'PUT'
+        };
+        fetch(writeTrendUrl, requestOptions)
+            .then(response => {
+                const success = response.status === 200;
+                const closeBtn = ""
+                if (success) {
+                    msg = 'Success';
+                }
+                else {
+                    msg = 'Failed';
+                }
+                var resultMsg = document.getElementById("write-trends-result");
+                resultMsg.innerHTML = msg;
+                setTimeout(() => {
+                    resultMsg.innerHTML = '';
+                }, 1000); 
+            });
+    }
+</script>
+
+</html>
