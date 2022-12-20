@@ -9,10 +9,36 @@
     <h2>Trends</h2>
     <button onclick="saveTrends()">Save trends</button>
     <p id="write-trends-result"></p>
+    <button onclick="emailTrends()">Email me</button>
+    <p id="email-trends-result"></p>
 
 </body>
 
 <script>
+    function emailTrends() {
+        var msg = 'Working...';
+        document.getElementById("email-trends-result").innerHTML = msg;
+        const sendEmailUrl = 'https://ajqc8nxe7e.execute-api.us-west-2.amazonaws.com/dev/email-trends';
+        const requestOptions = {
+            method: 'PUT'
+        };
+        fetch(sendEmailUrl, requestOptions)
+            .then(response => {
+                const success = response.status === 200;
+                const closeBtn = ""
+                if (success) {
+                    msg = 'Sent';
+                }
+                else {
+                    msg = 'Failed';
+                }
+                var resultMsg = document.getElementById("email-trends-result");
+                resultMsg.innerHTML = msg;
+                setTimeout(() => {
+                    resultMsg.innerHTML = '';
+                }, 1000); 
+            });
+    }
     function saveTrends() {
         var msg = 'Working...';
         document.getElementById("write-trends-result").innerHTML = msg;
