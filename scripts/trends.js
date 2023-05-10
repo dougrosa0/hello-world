@@ -4,8 +4,16 @@ function emailTrends() {
     var msg = 'Working...';
     document.getElementById("email-trends-result").innerHTML = msg;
     const sendEmailUrl = apiUrl + '/email-trends';
+    const data = {
+      date: getFormattedDate(),
+      email: document.getElementById("email-input").value
+    };
     const requestOptions = {
-        method: 'PUT'
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
     };
     fetch(sendEmailUrl, requestOptions)
         .then(response => {
