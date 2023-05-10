@@ -47,7 +47,7 @@ function getTrends() {
                     const rankCell = row.insertCell(0);
                     rankCell.innerHTML = results[i].dayRank;
                     const queryCell = row.insertCell(1);
-                    queryCell.innerHTML = results[i].queryText;
+                    queryCell.innerHTML = "<a href=\"" + encodeURI('https://google.com/search?q=' + results[i].queryText) + "\">" + results[i].queryText + "</a>";
                     const trafficCell = row.insertCell(2);
                     trafficCell.innerHTML = results[i].trafficAmount;
                   }
