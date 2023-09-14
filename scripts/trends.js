@@ -5,13 +5,13 @@ function emailTrends() {
     document.getElementById("email-trends-result").innerHTML = msg;
     const sendEmailUrl = apiUrl + '/email-trends';
     const data = {
-      date: getFormattedDate(),
-      email: document.getElementById("email-input").value
+        date: getFormattedDate(),
+        email: document.getElementById("email-input").value
     };
     const requestOptions = {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     };
@@ -48,21 +48,21 @@ function getTrends() {
             const closeBtn = ""
             if (success) {
                 response.json().then(data => {
-                  msg = data;
-                  const results = JSON.parse(data.body);
-                  for (let i = 0; i < results.length; i++) {
-                    const row = table.insertRow();
-                    const rankCell = row.insertCell(0);
-                    rankCell.innerHTML = results[i].dayRank;
-                    const queryCell = row.insertCell(1);
-                    queryCell.innerHTML = "<a href=\"" + encodeURI('https://google.com/search?q=' + results[i].queryText) + "\">" + results[i].queryText + "</a>";
-                    const trafficCell = row.insertCell(2);
-                    trafficCell.innerHTML = results[i].trafficAmount;
-                  }
-                  resultMsg.innerHTML = "";
-              }).catch(error => {
-                  console.error('Error getting response body:', error);
-              })
+                    msg = data;
+                    const results = JSON.parse(data.body);
+                    for (let i = 0; i < results.length; i++) {
+                        const row = table.insertRow();
+                        const rankCell = row.insertCell(0);
+                        rankCell.innerHTML = results[i].dayRank;
+                        const queryCell = row.insertCell(1);
+                        queryCell.innerHTML = "<a href=\"" + encodeURI('https://google.com/search?q=' + results[i].queryText) + "\">" + results[i].queryText + "</a>";
+                        const trafficCell = row.insertCell(2);
+                        trafficCell.innerHTML = results[i].trafficAmount;
+                    }
+                    resultMsg.innerHTML = "";
+                }).catch(error => {
+                    console.error('Error getting response body:', error);
+                })
             }
             else {
                 msg = 'Failed';
@@ -96,10 +96,10 @@ function saveTrends() {
 };
 
 function getFormattedDate() {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-  const day = String(currentDate.getDate()).padStart(2, '0');
-  const formattedDate = `${year}${month}${day}`;
-  return formattedDate;
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const formattedDate = `${year}${month}${day}`;
+    return formattedDate;
 }
