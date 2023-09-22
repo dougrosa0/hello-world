@@ -39,9 +39,14 @@ function getTrends() {
     const table = document.getElementById("google-trends");
     resultMsg.innerHTML = msg;
     var url = apiUrl + '?date=' + getFormattedDate();
+    const accessToken = sessionStorage.getItem('accessToken');
     const requestOptions = {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+          },
     };
+    
     fetch(url, requestOptions)
         .then(response => {
             const success = response.status === 200;
