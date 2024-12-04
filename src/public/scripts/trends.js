@@ -1,9 +1,9 @@
-const apiUrl = 'https://ajqc8nxe7e.execute-api.us-west-2.amazonaws.com/dev';
+const apiUrl = 'http://localhost:3000/trends';
 
 function emailTrends() {
     var msg = 'Working...';
     document.getElementById("email-trends-result").innerHTML = msg;
-    const sendEmailUrl = apiUrl + '/email-trends';
+    const sendEmailUrl = apiUrl + '/email';
     const data = {
         date: getFormattedDate(),
         email: document.getElementById("email-input").value
@@ -38,13 +38,9 @@ function getTrends() {
     var resultMsg = document.getElementById("get-trends-result");
     const table = document.getElementById("google-trends");
     resultMsg.innerHTML = msg;
-    var url = apiUrl + '?date=' + getFormattedDate();
-    const accessToken = sessionStorage.getItem('accessToken');
+    var url = apiUrl + '/' + getFormattedDate();
     const requestOptions = {
         method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + accessToken
-          },
     };
     
     fetch(url, requestOptions)

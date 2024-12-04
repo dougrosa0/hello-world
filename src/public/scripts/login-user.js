@@ -9,8 +9,8 @@ function loginUser(event) {
   });
 
   var authFlow = "USER_PASSWORD_AUTH";
-  const clientId = "x"; // move to secrets manager
-  const clientSecret = "y";
+  const clientId = "3l2bfr2fosvu6cgc4t6uauqi7f"; // move to secrets manager
+  const clientSecret = "7nhe6r1n2jbfrtcb8ig7en8nfooo5d629md860miirlm4f0rr07";
 
   // Get user input
   const username = document.getElementById("username").value;
@@ -35,7 +35,8 @@ function loginUser(event) {
         document.getElementById("loginMessage").textContent = err.message;
     } 
     else {
-        sessionStorage.setItem('accessToken', data.AuthenticationResult.IdToken); // todo - switch to access token
+        sessionStorage.setItem('idToken', data.AuthenticationResult.IdToken); // todo - switch to access token
+        sessionStorage.setItem('accessToken', data.AuthenticationResult.AccessToken); // todo - switch to access token
         document.getElementById("loginMessage").textContent = "Login successful!";
         window.location.href = "index.html";
     }
