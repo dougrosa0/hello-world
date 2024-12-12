@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/trends';
+const apiUrl = '{{TRENDS_API_URL}}';
 
 function emailTrends() {
     var msg = 'Working...';

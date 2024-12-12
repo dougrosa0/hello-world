@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/dougrosa0/hello-world#readme",
   "dependencies": {
-    "express": "^4.21.1"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "fs": "^0.0.1-security"
   }
 }
