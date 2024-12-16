@@ -4,7 +4,7 @@
   "description": "Client-server for things I build",
   "main": "client-server.js",
   "scripts": {
-    "start": "node ./src/client-server.js"
+    "start": "cd src && node client-server.js"
   },
   "repository": {
     "type": "git",
