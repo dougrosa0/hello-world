@@ -26,7 +26,7 @@ exports.replaceConfigs = async function replaceConfigs() {
         
         // Write to dist file
         await fs.writeFile(outputScript, content);
-        console.log(`Successfully processed ${outputScript}`);
+        console.log(`Successfully processed configurations for ${outputScript}`);
     } catch (error) {
         console.error(`Error processing script file:`, error);
         throw error;
