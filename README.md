@@ -27,7 +27,6 @@ npm start
 ## Deployment
 
 1. Deploy to heroku:
-heroku create hello-world
 git push heroku main
 
-2. Set AWS credentials in heroku config vars
+2. Set trends-api url in heroku config vars

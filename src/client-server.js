@@ -2,7 +2,7 @@ const express = require('express');
 const configProcessor = require('./public/scripts/config-processor');
 
 const app = express();
-const port = 3017;
+const port = process.env.PORT || 3017;
 
 configProcessor.replaceConfigs();
 
