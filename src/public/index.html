@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="scripts/dist/trends.js"></script>
+  <link rel="stylesheet" href="/styles/style.css">
   <title>Home</title>
 </head>
 
@@ -12,23 +13,25 @@
 
   <h1>Hello world</h1>
   <p>Putting things I build here</p>
-  <h2>US Trends</h2>
-  <h3>Google search</h3>
-  <table id="google-trends">
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Query</th>
-        <th>Traffic</th>
-      </tr>
-    </thead>
-  </table>
-  <p id="get-trends-result"></p>
-  <button onclick="saveTrends()">Save trends</button>
-  <p id="write-trends-result"></p>
-  <input type="text" id="email-input">
-  <button onclick="emailTrends()">Email me</button>
-  <p id="email-trends-result"></p>
+  <section class="trends-container">
+    <h2>US Trends</h2>
+    <h3>Google search</h3>
+    <table id="google-trends">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Query</th>
+          <th>Traffic</th>
+        </tr>
+      </thead>
+    </table>
+    <p id="get-trends-result"></p>
+    <button onclick="saveTrends()">Save trends</button>
+    <p id="write-trends-result"></p>
+    <input type="text" id="email-input">
+    <button onclick="emailTrends()">Email me</button>
+    <p id="email-trends-result"></p>
+  </section>
 
 </body>
 
