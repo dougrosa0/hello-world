@@ -9,13 +9,17 @@
   <title>Home</title>
 </head>
 
-<body onload="getTrends()">
+<body onload="initializePage()">
 
   <h1>Hello world</h1>
   <p>Putting things I build here</p>
   <section class="trends-container">
     <h2>US Trends</h2>
     <h3>Google search</h3>
+    <div class="trends-controls">
+      <input type="date" id="trends-date" name="trends-date">
+      <button onclick="getTrends()">Load</button>
+    </div>
     <table id="google-trends">
       <thead>
         <tr>
@@ -26,7 +30,7 @@
       </thead>
     </table>
     <p id="get-trends-result"></p>
-    <button onclick="saveTrends()">Save trends</button>
+    
     <p id="write-trends-result"></p>
     <input type="text" id="email-input">
     <button onclick="emailTrends()">Email me</button>
