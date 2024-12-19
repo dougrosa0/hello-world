@@ -1,5 +1,23 @@
 const apiUrl = '{{TRENDS_API_URL}}';
 
+function displayResults(results, table, resultMsg) {
+    // Clear existing table rows
+    while (table.rows.length > 1) {  // Keep header row
+        table.deleteRow(1);
+    }
+    
+    for (let i = 0; i < results.length; i++) {
+        const row = table.insertRow();
+        const rankCell = row.insertCell(0);
+        rankCell.innerHTML = results[i].dayRank;
+        const queryCell = row.insertCell(1);
+        queryCell.innerHTML = "<a href=\"" + encodeURI('https://google.com/search?q=' + results[i].queryText) + "\">" + results[i].queryText + "</a>";
+        const trafficCell = row.insertCell(2);
+        trafficCell.innerHTML = results[i].trafficAmount;
+    }
+    resultMsg.innerHTML = "";
+}
+
 function emailTrends() {
     var msg = 'Working...';
     document.getElementById("email-trends-result").innerHTML = msg;
@@ -32,6 +50,21 @@ function emailTrends() {
             }, 1000);
         });
 };
+
+function getFormattedDate() {
+    const dateInput = document.getElementById("trends-date");
+    if (!dateInput.value) {
+        // If no date is selected, use current date as fallback
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+    
+    // Remove the dashes from the date picker value (which comes in YYYY-MM-DD format)
+    return dateInput.value;
+}
 
 async function getTrends() {
     var msg = 'Working...';
@@ -70,29 +103,19 @@ async function getTrends() {
     }
 }
 
-// Helper function to display results
-function displayResults(results, table, resultMsg) {
-    // Clear existing table rows
-    while (table.rows.length > 1) {  // Keep header row
-        table.deleteRow(1);
-    }
+function initializePage() {
+    // Set default date to today
+    const today = new Date().toISOString().split('T')[0];  // Format: YYYY-MM-DD
+    document.getElementById("trends-date").value = today;
     
-    for (let i = 0; i < results.length; i++) {
-        const row = table.insertRow();
-        const rankCell = row.insertCell(0);
-        rankCell.innerHTML = results[i].dayRank;
-        const queryCell = row.insertCell(1);
-        queryCell.innerHTML = "<a href=\"" + encodeURI('https://google.com/search?q=' + results[i].queryText) + "\">" + results[i].queryText + "</a>";
-        const trafficCell = row.insertCell(2);
-        trafficCell.innerHTML = results[i].trafficAmount;
-    }
-    resultMsg.innerHTML = "";
+    // Get trends for the default date
+    getTrends();
 }
 
 function saveTrends() {
     var msg = 'Working...';
     document.getElementById("get-trends-result").innerHTML = msg;
-    var url = apiUrl + '/' + getFormattedWriteDate();
+    var url = apiUrl + '/' + getFormattedDate();
     const requestOptions = {
         method: 'PUT'
     };
@@ -112,42 +135,3 @@ function saveTrends() {
             }, 1000);
         });
 };
-
-function getFormattedDate() {
-    const dateInput = document.getElementById("trends-date");
-    if (!dateInput.value) {
-        // If no date is selected, use current date as fallback
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        return `${year}${month}${day}`;
-    }
-    
-    // Remove the dashes from the date picker value (which comes in YYYY-MM-DD format)
-    return dateInput.value.replace(/-/g, '');
-}
-
-function getFormattedWriteDate() {
-    const dateInput = document.getElementById("trends-date");
-    if (!dateInput.value) {
-        // If no date is selected, use current date as fallback
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
-    }
-    
-    // Remove the dashes from the date picker value (which comes in YYYY-MM-DD format)
-    return dateInput.value;
-}
-
-function initializePage() {
-    // Set default date to today
-    const today = new Date().toISOString().split('T')[0];  // Format: YYYY-MM-DD
-    document.getElementById("trends-date").value = today;
-    
-    // Get trends for the default date
-    getTrends();
-}
