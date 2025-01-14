@@ -7,9 +7,26 @@
   <script src="scripts/dist/trends.js"></script>
   <link rel="stylesheet" href="/styles/style.css">
   <title>Home</title>
+  <style>
+    .auth-section {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .user-name {
+      margin: 0;
+    }
+  </style>
+  <script src="scripts/auth.js"></script>
 </head>
 
 <body onload="initializePage()">
+  <div class="auth-section" id="auth-section">
+    <!-- This will be populated by JavaScript -->
+  </div>
 
   <h1>Hello world</h1>
   <p>Putting things I build here. (<a href="https://github.com/dougrosa0/hello-world">front-end source code</a>)</p>
