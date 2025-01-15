@@ -1,6 +1,6 @@
 require('dotenv').config();
 const configProcessor = require('./public/scripts/config-processor');
-const authRouter = require('./public/scripts/auth');
+const authRouter = require('./public/scripts/auth-routes');
 const express = require('express');
 const { auth } = require('express-openid-connect');
 const path = require('path');

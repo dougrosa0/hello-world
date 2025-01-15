@@ -1,3 +1,12 @@
+.auth-section {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .trends-container {
   display: inline-block;
   border: 1px solid #ccc;
@@ -11,6 +20,10 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+
+.user-name {
+  margin: 0;
 }
 
 table, th, td {

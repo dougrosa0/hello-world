@@ -1,6 +1,3 @@
-const express = require('express');
-const router = express.Router();
-
 async function updateAuthSection() {
     try {
         const response = await fetch('/auth-status');
@@ -22,17 +19,9 @@ async function updateAuthSection() {
     }
 }
 
-router.get('/auth-status', (req, res) => {
-  res.json({
-    isAuthenticated: req.oidc.isAuthenticated(),
-    user: req.oidc.user
-  });
-});
-
-module.exports = router;
-
-// Add this to your existing initializePage function
 function initializePage() {
     updateAuthSection();
-    // ... any other initialization code ...
-} 
+    updateTrendChart();
+}
+
+export { initializePage }; 

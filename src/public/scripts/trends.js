@@ -103,12 +103,15 @@ async function getTrends() {
     }
 }
 
-function initializePage() {
-    // Set default date to today
-    const today = new Date().toISOString().split('T')[0];  // Format: YYYY-MM-DD
+function updateTrendChart() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');  // Months are 0-based
+    const day = String(now.getDate()).padStart(2, '0');
+    const today = `${year}-${month}-${day}`;  // Format: YYYY-MM-DD
+    
     document.getElementById("trends-date").value = today;
     
-    // Get trends for the default date
     getTrends();
 }
 
