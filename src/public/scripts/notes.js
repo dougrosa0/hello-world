@@ -24,7 +24,7 @@ async function saveNote() {
         }
 
         // Prepare the request
-        const response = await fetch(`${notesApiUrl}/notes`, {
+        const response = await fetch(`${notesApiUrl}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ async function getNoteForDate(date) {
             return;
         }
 
-        const response = await fetch(`${notesApiUrl}/notes/${authData.userId}/${date}`, {
+        const response = await fetch(`${notesApiUrl}/${authData.userId}/${date}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
