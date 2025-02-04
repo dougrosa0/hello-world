@@ -7,7 +7,6 @@ async function saveNote() {
         
         const userData = await fetch('/auth-status');
         const authData = await userData.json();
-        console.log('Save Note - userId:', authData.userId);
         if (!authData.isAuthenticated) {
             displayMessage('Error: User not authenticated', 'error');
             return;
@@ -31,7 +30,7 @@ async function saveNote() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                date: new Date().toISOString(),
+                date: new Date().toISOString().split('T')[0],
                 userId: authData.userId,
                 notes: noteText.trim(),
                 dayRank: parseInt(dayRank)
@@ -57,7 +56,6 @@ async function getNoteForDate(date) {
     try {
         const userData = await fetch('/auth-status');
         const authData = await userData.json();
-        console.log('Get Note - userId:', authData.userId);
         if (!authData.isAuthenticated) {
             displayMessage('Error: User not authenticated', 'error');
             return;
