@@ -7,6 +7,7 @@ async function saveNote() {
         
         const userData = await fetch('/auth-status');
         const authData = await userData.json();
+        console.log('Save Note - userId:', authData.userId);
         if (!authData.isAuthenticated) {
             displayMessage('Error: User not authenticated', 'error');
             return;
