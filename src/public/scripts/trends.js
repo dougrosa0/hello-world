@@ -113,6 +113,7 @@ function updateTrendChart() {
     document.getElementById("trends-date").value = today;
     
     getTrends();
+    getNoteForDate(today); // todo move these to init
 }
 
 function saveTrends() {

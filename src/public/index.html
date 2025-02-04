@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="scripts/dist/trends.js"></script>
+  <script src="scripts/dist/notes.js"></script>
   <script type="module">
     import { initializePage } from '/scripts/init.js';
     document.addEventListener('DOMContentLoaded', initializePage);
@@ -26,6 +27,16 @@
               placeholder="Add your personal notes here..." 
               disabled
               class="user-notes-input"></textarea>
+    <select id="day-rank" disabled>
+      <option value="">Select day rank</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <button id="save-notes" disabled onclick="saveNote()">Save Notes</button>
+    <p id="save-notes-result"></p>
   </div>
 
   <section class="trends-container">
