@@ -57,6 +57,7 @@ async function getNoteForDate(date) {
     try {
         const userData = await fetch('/auth-status');
         const authData = await userData.json();
+        console.log('Get Note - userId:', authData.userId);
         if (!authData.isAuthenticated) {
             displayMessage('Error: User not authenticated', 'error');
             return;
