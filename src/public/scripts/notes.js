@@ -63,7 +63,8 @@ async function getNoteForDate(date) {
             return;
         }
 
-        const response = await fetch(`${notesApiUrl}/${authData.userId}/${date}`, {
+        const encodedUserId = encodeURIComponent(authData.userId);
+        const response = await fetch(`${notesApiUrl}/${encodedUserId}/${date}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
