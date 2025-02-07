@@ -1,3 +1,5 @@
+import { getTrends } from './trends.js';
+import { getNoteForDate } from './notes.js';
 
 async function updateAuthSection() {
     try {
@@ -32,7 +34,6 @@ async function updateAuthSection() {
 function initializePage() {
     updateAuthSection();
     updateTrendChart();
-    getNoteForDate(isoDate);
 }
 
 function updateTrendChart() {
@@ -47,6 +48,7 @@ function updateTrendChart() {
     const isoDate = now.toISOString().split('T')[0];
     
     getTrends();
+    getNoteForDate(isoDate);
 }
 
 export { initializePage }; 
