@@ -52,7 +52,7 @@ async function saveNote() {
     }
 }
 
-async function getNoteForDate(date) {
+export async function getNoteForDate(date) {
     try {
         const userData = await fetch('/auth-status');
         const authData = await userData.json();

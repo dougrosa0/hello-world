@@ -66,7 +66,7 @@ function getFormattedDate() {
     return dateInput.value;
 }
 
-async function getTrends() {
+export async function getTrends() {
     var msg = 'Working...';
     var resultMsg = document.getElementById("get-trends-result");
     const table = document.getElementById("google-trends");
