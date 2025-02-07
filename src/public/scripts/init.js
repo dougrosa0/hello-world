@@ -16,6 +16,7 @@ async function updateAuthSection() {
                 <a href="/logout" class="btn">Logout</a>
             `;
             userNotes.disabled = false;
+            userNotes.placeholder = 'login to add your personal notes here...';
             dayRank.disabled = false;
             saveNotes.disabled = false;
         } else {
