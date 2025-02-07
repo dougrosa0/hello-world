@@ -76,11 +76,11 @@ async function getNoteForDate(date) {
         const note = await response.json();
         if (note) {
             // Update the form fields with the retrieved data
-            document.getElementById('note-input').value = note.notes || '';
+            document.getElementById('user-notes').value = note.notes || '';
             document.getElementById('day-rank').value = note.dayRank || '';
         } else {
             // Clear the form fields if no note exists
-            document.getElementById('note-input').value = '';
+            document.getElementById('user-notes').value = '';
             document.getElementById('day-rank').value = '';
         }
 
@@ -93,7 +93,7 @@ async function getNoteForDate(date) {
 }
 
 function displayMessage(message, type) {
-    const messageDiv = document.getElementById('message-display') || createMessageDisplay();
+    const messageDiv = document.getElementById('save-notes-result');
     messageDiv.textContent = message;
     messageDiv.className = `message ${type}`;
     
@@ -102,12 +102,4 @@ function displayMessage(message, type) {
         messageDiv.textContent = '';
         messageDiv.className = 'message';
     }, 3000);
-}
-
-function createMessageDisplay() {
-    const messageDiv = document.createElement('div');
-    messageDiv.id = 'message-display';
-    messageDiv.className = 'message';
-    document.body.appendChild(messageDiv);
-    return messageDiv;
 }
