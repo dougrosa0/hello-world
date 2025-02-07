@@ -1,3 +1,4 @@
+
 async function updateAuthSection() {
     try {
         const response = await fetch('/auth-status');
@@ -31,6 +32,21 @@ async function updateAuthSection() {
 function initializePage() {
     updateAuthSection();
     updateTrendChart();
+    getNoteForDate(isoDate);
+}
+
+function updateTrendChart() {
+    const now = new Date();
+    // Format local date for display (YYYY-MM-DD)
+    const localDate = now.toLocaleDateString('en-CA'); // en-CA gives YYYY-MM-DD format
+    
+    // Set the input value to local date
+    document.getElementById("trends-date").value = localDate;
+    
+    // Format ISO date for API call (YYYY-MM-DD with timezone consideration)
+    const isoDate = now.toISOString().split('T')[0];
+    
+    getTrends();
 }
 
 export { initializePage }; 

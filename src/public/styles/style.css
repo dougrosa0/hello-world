@@ -50,6 +50,7 @@ th, td {
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+  box-sizing: border-box;
 }
 
 .user-notes-input:disabled {
@@ -67,4 +68,27 @@ th, td {
   width: auto;
   align-self: flex-start;
   padding: 0.25rem;
+}
+
+.notes-container, .trends-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: top;  /* Aligns containers at the top */
+}
+
+.notes-container h2, .trends-container h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Remove any absolute positioning */
+.notes-container {
+    position: static;
+}
+
+#save-notes-result {
+    margin: 0;
 }

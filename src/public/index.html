@@ -22,27 +22,30 @@
   <h1>Hello world</h1>
   <p>Putting things I build here. (<a href="https://github.com/dougrosa0/hello-world">front-end source code</a>)</p>
   
-  <div class="notes-section">
-    <textarea id="user-notes" 
-              placeholder="Add your personal notes here..." 
-              disabled
-              class="user-notes-input"></textarea>
-    <select id="day-rank" disabled>
-      <option value="">Select day rank</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-    <button id="save-notes" disabled onclick="saveNote()">Save Notes</button>
-    <p id="save-notes-result"></p>
-  </div>
+  <section class="notes-container">
+    <h2>Reflections</h2>
+    <p>(<a href="https://github.com/dougrosa0/notes-api">api source code</a>)</p>
+    <div class="notes-section">
+      <textarea id="user-notes" 
+                placeholder="login to add your personal notes here..." 
+                disabled
+                class="user-notes-input"></textarea>
+      <select id="day-rank" disabled>
+        <option value="">Select day rank</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button id="save-notes" disabled onclick="saveNote()">Save Notes</button>
+      <p id="save-notes-result"></p>
+    </div>
+  </section>
 
   <section class="trends-container">
-    <h2>US Trends</h2>
+    <h2>Google Search Trends</h2>
     <p>(<a href="https://github.com/dougrosa0/trends-api">api source code</a>)</p>
-    <h3>Google search</h3>
     <div class="trends-controls">
       <input type="date" id="trends-date" name="trends-date">
       <button onclick="getTrends()">Load</button>
