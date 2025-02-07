@@ -105,15 +105,17 @@ async function getTrends() {
 
 function updateTrendChart() {
     const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');  // Months are 0-based
-    const day = String(now.getDate()).padStart(2, '0');
-    const today = `${year}-${month}-${day}`;  // Format: YYYY-MM-DD
+    // Format local date for display (YYYY-MM-DD)
+    const localDate = now.toLocaleDateString('en-CA'); // en-CA gives YYYY-MM-DD format
     
-    document.getElementById("trends-date").value = today;
+    // Set the input value to local date
+    document.getElementById("trends-date").value = localDate;
+    
+    // Format ISO date for API call (YYYY-MM-DD with timezone consideration)
+    const isoDate = now.toISOString().split('T')[0];
     
     getTrends();
-    getNoteForDate(today); // todo move these to init
+    getNoteForDate(isoDate);
 }
 
 function saveTrends() {
